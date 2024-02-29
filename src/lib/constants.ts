@@ -1,6 +1,6 @@
 export const LINKS = {
   github: "https://github.com/layefaa",
-  linkedin: "www.linkedin.com/in/martin-luther-obahor-7bb549187",
+  linkedin: "https://linkedin.com/in/martin-luther-obahor-7bb549187",
   // medium: "https://ladvace.medium.com/",
   // discord: "https://discordapp.com/users/163300027618295808",
   // dribble: "https://dribbble.com/Ladvace_Jace",
