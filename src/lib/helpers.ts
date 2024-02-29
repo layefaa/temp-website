@@ -26,7 +26,7 @@ export function formatTimeForItaly(date: Date): string {
 
   // Append the time zone abbreviation. You can automate this with libraries like `moment-timezone`.
   // For simplicity, here I'm just appending "CET", but do remember that Italy switches between CET and CEST.
-  formattedTime += " CET";
+  formattedTime += " WAT";
 
   return formattedTime;
 }
