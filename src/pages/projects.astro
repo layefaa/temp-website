@@ -7,6 +7,11 @@ import Layout from "../layouts/Layout.astro";
 import ContactsCard from "../components/ContactsCard.astro";
 import IntroCard from "../components/IntroCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
+import {LINKS} from "../lib/constants";
+import {Icon} from "astro-icon/components";
+import Button from "../components/Button.astro";
+import Tooltip from "../components/Tooltip";
+import Content from "../components/Card/Content.astro";
 ---
 
 
@@ -23,11 +28,18 @@ import TimeZone from "../components/TimeZoneCard.astro";
     >
 
 
-    <main
-            class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
-    >
-        <div class="text-white">
-            Coming Soon
+    <main class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]">
+        <div
+                class={`card group overflow-hidden transform-y-[-40%] bg-darkslate-500 shadow-lg rounded-lg p- border border-darkslate-100 hover:border-primary-500 align-start flex-none justify-start relative transform perspective-1200 w-full transition duration-75 ease-in-out col-span-1 h-auto md:col-span-2 md:row-span-4`}
+        >
+            <div class="flex w-full h-full">
+                <div class="flex flex-col justify-between w-full
+                 md:max-h-[300px] gap-4">
+                    <div class="bg-red w-full p-4"></div>
+
+                </div>
+            </div>
+
         </div>
     </main>
 
