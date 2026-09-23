@@ -8,22 +8,20 @@ interface Props {
 
 const { colSpan, rowSpan } = Astro.props;
 
-const languages = ["JavaScript", "TypeScript", "Python", "Go", "Rust", "Dart", "Bash", "SQL"];
-const frameworks = ["Next.js", "React", "Flutter", "Vue.js", "TailwindCSS", "Firebase", "Supabase"];
-const cyberTools = ["Wireshark", "Splunk", "Burp Suite", "Suricata", "Vulnerability Audit"];
-const securityFrameworks = ["NIST CSF", "ISO 27001", "CIS Controls", "PCI DSS"];
-const tooling = ["GCP", "Docker", "Linux", "Vercel", "Netlify", "Git", "GitHub"];
+const coreTech = ["TypeScript", "Next.js", "React", "Flutter", "Python", "Go", "TailwindCSS", "SQL"];
+const securityStack = ["Wireshark", "Splunk", "Burp Suite", "Suricata", "Vulnerability Audit"];
+const cloudAndDevOps = ["GCP", "Docker", "Linux", "Git", "NIST CSF", "ISO 27001"];
 ---
 
 <Card colSpan={colSpan || "lg:col-span-2"} rowSpan={rowSpan || ""} title="Technical & Security Stack">
-  <div class="flex flex-col gap-3.5 h-full justify-between mt-1">
+  <div class="flex flex-col gap-4 h-full justify-between mt-2">
     <div>
-      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-1.5">
-        Languages & Core
+      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-2">
+        Frontend & Core Systems
       </span>
-      <div class="flex flex-wrap gap-1.5">
-        {languages.map((item) => (
-          <span class="px-2.5 py-1 rounded bg-darkslate-400/90 border border-slate-700 text-white font-mono text-xs font-medium hover:border-primary-400 hover:text-primary-200 transition-colors">
+      <div class="flex flex-wrap gap-2">
+        {coreTech.map((item) => (
+          <span class="px-3 py-1 rounded-md bg-darkslate-400/90 border border-slate-700 text-white font-mono text-xs font-medium hover:border-primary-400 hover:text-primary-200 transition-colors">
             {item}
           </span>
         ))}
@@ -31,55 +29,28 @@ const tooling = ["GCP", "Docker", "Linux", "Vercel", "Netlify", "Git", "GitHub"]
     </div>
 
     <div>
-      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-1.5">
-        Frameworks & Libraries
+      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-2">
+        Cybersecurity Tooling & Ops
       </span>
-      <div class="flex flex-wrap gap-1.5">
-        {frameworks.map((item) => (
-          <span class="px-2.5 py-1 rounded bg-darkslate-400/90 border border-slate-700 text-white text-xs font-medium hover:border-primary-400 hover:text-primary-200 transition-colors">
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-
-    <div>
-      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-1.5">
-        Cybersecurity Tools
-      </span>
-      <div class="flex flex-wrap gap-1.5">
-        {cyberTools.map((item) => (
-          <span class="px-2.5 py-1 rounded bg-primary-950/80 border border-primary-400/60 text-primary-100 text-xs font-bold hover:border-primary-300 transition-colors">
+      <div class="flex flex-wrap gap-2">
+        {securityStack.map((item) => (
+          <span class="px-3 py-1 rounded-md bg-primary-950/80 border border-primary-400/60 text-primary-100 text-xs font-bold hover:border-primary-300 transition-colors">
             🛡️ {item}
           </span>
         ))}
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2.5 border-t border-darkslate-100">
-      <div>
-        <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-1.5">
-          Security Frameworks
-        </span>
-        <div class="flex flex-wrap gap-1">
-          {securityFrameworks.map((item) => (
-            <span class="px-2 py-0.5 rounded bg-darkslate-400/90 border border-slate-700 text-white text-xs font-medium">
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-      <div>
-        <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-1.5">
-          Cloud & Tooling
-        </span>
-        <div class="flex flex-wrap gap-1">
-          {tooling.map((item) => (
-            <span class="px-2 py-0.5 rounded bg-darkslate-400/90 border border-slate-700 text-white text-xs font-medium">
-              {item}
-            </span>
-          ))}
-        </div>
+    <div class="pt-3 border-t border-darkslate-100">
+      <span class="text-xs font-bold text-primary-300 uppercase tracking-wider block mb-2">
+        Cloud Infrastructure & Compliance
+      </span>
+      <div class="flex flex-wrap gap-2">
+        {cloudAndDevOps.map((item) => (
+          <span class="px-3 py-1 rounded-md bg-darkslate-400/90 border border-slate-700 text-slate-100 text-xs font-medium">
+            {item}
+          </span>
+        ))}
       </div>
     </div>
   </div>
