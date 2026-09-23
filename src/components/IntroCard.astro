@@ -1,45 +1,64 @@
 ---
 import Card from "./Card/index.astro";
 import Button from "./Button.astro";
-import { LINKS } from "../lib/constants";
+import { LINKS, PROFILE } from "../lib/constants";
 import { Icon } from "astro-icon/components";
 import Tooltip from "./Tooltip/index";
+
+interface Props {
+  colSpan?: string;
+  rowSpan?: string;
+}
+
+const { colSpan, rowSpan } = Astro.props;
 ---
 
-<Card colSpan="md:col-span-3" rowSpan="md:row-span-4">
-  <div class="flex w-full h-full">
-    <div class="flex flex-col justify-between md:max-h-[300px] gap-4">
-      <div class="flex flex-col h-full">
-        <h6 class="text-sm font-light m-0 text-gray-500">welcome</h6>
-        <p class="m-0 font-light text-xl">
-          Hi, I'm <b class="font-bold">Martin Luther Obahor</b>, a software
-          developer with strong focus on the user experience, animations and
-          micro interactions
+<Card colSpan={colSpan || "lg:col-span-3"} rowSpan={rowSpan || ""}>
+  <div class="flex flex-col md:flex-row justify-between w-full h-full gap-4 items-center">
+    <div class="flex flex-col justify-between h-full gap-4 flex-1 z-10 w-full">
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2 mb-2.5">
+          <span class="px-2.5 py-1 text-xs font-bold rounded-full bg-primary-500/25 text-primary-200 border border-primary-400/50">
+            {PROFILE.experience} Experience
+          </span>
+          <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-darkslate-100 text-white border border-darkslate-50">
+            📍 {PROFILE.location}
+          </span>
+        </div>
+        <h1 class="m-0 font-medium text-xl md:text-2xl lg:text-3xl leading-snug text-white">
+          Hi, I'm <b class="font-bold text-white">{PROFILE.name}</b> <span class="text-sm font-mono text-primary-300 font-bold">({PROFILE.handle})</span> — <span class="text-primary-300 font-bold">{PROFILE.title}</span>.
+        </h1>
+        <p class="mt-3 text-sm md:text-base text-slate-100 font-normal leading-relaxed">
+          {PROFILE.bio}
         </p>
+        <div class="mt-3 flex items-center gap-2 text-xs font-mono text-emerald-300 bg-slate-900/90 border border-slate-700 rounded-md px-3 py-1.5 w-fit font-semibold shadow-sm">
+          <span class="text-emerald-400 text-sm">●</span>
+          <span>STATUS: FRONTEND ONLINE · NETWORKS SECURE · VULN OPS ACTIVE</span>
+        </div>
       </div>
-      <div class="flex gap-4">
+      <div class="flex items-center gap-3 pt-2">
         <a href={LINKS.github} aria-label="github profile" target="_blank">
           <Button aria-label="github profile">
             <Icon name="ri:github-fill" class="h-6" />
             <span class="sr-only">GitHub Profile</span>
           </Button>
         </a>
-        <a href={LINKS.linkedin} aria-label="linkeding profile" target="_blank">
+        <a href={LINKS.linkedin} aria-label="linkedin profile" target="_blank">
           <Button aria-label="linkedin profile">
             <Icon name="ri:linkedin-box-fill" class="h-6" />
             <span class="sr-only">Linkedin Profile</span>
           </Button>
         </a>
-        <!--<a href={LINKS.dribble} aria-label="dribble profile" target="_blank">-->
-        <!--  <Button aria-label="dribble profile">-->
-        <!--    <Icon name="ri:dribbble-fill" class="h-6" />-->
-        <!--    <span class="sr-only">Dribble Profile</span>-->
-        <!--  </Button>-->
-        <!--</a>-->
+        <a href={`mailto:${LINKS.email}`} aria-label="send email">
+          <Button aria-label="send email">
+            <Icon name="ri:mail-line" class="h-6" />
+            <span class="sr-only">Email</span>
+          </Button>
+        </a>
         <Tooltip client:visible>
           <Button aria-label="easter egg btn">
-            <Icon name="ri:emotion-laugh-line" class="h-6" />
-            <span class="sr-only">Easter egg button</span>
+            <Icon name="ri:shield-check-line" class="h-6 text-primary-400" />
+            <span class="sr-only">Security Status</span>
           </Button>
         </Tooltip>
       </div>
@@ -48,8 +67,8 @@ import Tooltip from "./Tooltip/index";
       width="300"
       height="300"
       src="/me.webp"
-      class="w-auto max-h-[300px] select-none absolute right-[-110px] bottom-[-20px] z-[-1] opacity-50 md:opacity-100 md:relative md:right-auto md:bottom-auto md:z-auto pointer-events-none"
-      alt="memoji of gianmarco"
+      class="w-auto max-h-[250px] md:max-h-[270px] select-none absolute right-[-40px] bottom-[-10px] md:relative md:right-auto md:bottom-auto opacity-35 md:opacity-100 pointer-events-none object-contain shrink-0 self-end"
+      alt="Profile avatar"
     />
   </div>
 </Card>

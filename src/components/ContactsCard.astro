@@ -1,37 +1,45 @@
 ---
 import Card from "./Card/index.astro";
-import { LINKS } from "../lib/constants";
+import { LINKS, PROFILE } from "../lib/constants";
+
+interface Props {
+  colSpan?: string;
+  rowSpan?: string;
+}
+
+const { colSpan, rowSpan } = Astro.props;
 ---
 
-<Card colSpan="md:col-span-1" rowSpan="md:row-span-4">
-  <div class="h-full">
-    <header class="flex items-center">
-      <h1 class="text-white text-xl font-bold">
-        Let's start working together!
-      </h1>
-    </header>
-    <address class="flex flex-col mt-4">
-      <h2 class="text-gray-500">Contact Details</h2>
-      <p>martinluther.obahor@gmail.com</p>
-      <p>+234 8154124189</p>
-      <p>Nigeria</p>
-    </address>
-    <div class="flex flex-col mt-4 w-fit">
-      <h2 class="text-gray-500">Socials</h2>
-      <ul>
+<Card colSpan={colSpan || "lg:col-span-2"} rowSpan={rowSpan || ""}>
+  <div class="h-full flex flex-col justify-between">
+    <div>
+      <header class="flex items-center">
+        <h2 class="text-white text-xl font-bold m-0">
+          Let's build secure software!
+        </h2>
+      </header>
+      <address class="flex flex-col mt-3.5 not-italic text-sm text-slate-100 gap-1.5">
+        <span class="text-xs uppercase tracking-wider text-primary-300 font-bold">Direct Contact</span>
+        <a href={`mailto:${LINKS.email}`} class="text-base sm:text-lg text-primary-300 hover:text-white font-bold underline transition-colors">{LINKS.email}</a>
+        <p class="m-0 text-sm text-white font-medium">📍 {PROFILE.location}</p>
+      </address>
+    </div>
+
+    <div class="flex flex-col mt-4">
+      <span class="text-xs uppercase tracking-wider text-primary-300 font-bold mb-2">Connect</span>
+      <ul class="flex flex-wrap gap-2.5 list-none p-0 m-0 text-sm">
         <li>
-          <a href={LINKS.linkedin} target="_blank">Linkedin</a>
+          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-darkslate-400/90 border border-slate-700 text-white font-semibold hover:border-primary-400 hover:text-primary-200 transition-colors inline-block">
+            LinkedIn ↗
+          </a>
         </li>
         <li>
-          <a href={LINKS.github} target="_blank">Github</a>
+          <a href={LINKS.github} target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-darkslate-400/90 border border-slate-700 text-white font-semibold hover:border-primary-400 hover:text-primary-200 transition-colors inline-block">
+            GitHub ↗
+          </a>
         </li>
-        <!--<li>-->
-        <!--  <a href={LINKS.medium} target="_blank">Medium</a>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--  <a href={LINKS.discord} target="_blank">Discord</a>-->
-        <!--</li>-->
       </ul>
     </div>
   </div>
 </Card>
+

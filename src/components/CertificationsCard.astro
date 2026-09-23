@@ -1,0 +1,37 @@
+---
+import Card from "./Card/index.astro";
+
+interface Props {
+  colSpan?: string;
+  rowSpan?: string;
+}
+
+const { colSpan, rowSpan } = Astro.props;
+
+const certifications = [
+  { name: "Google Cloud Associate Cloud Engineer", issuer: "Google Cloud", badge: "GCP ACE" },
+  { name: "Certified API Security Analyst", issuer: "API Security", badge: "CASA" },
+  { name: "AppSec Certified Practitioner", issuer: "OWASP", badge: "CAP" },
+  { name: "Google Cybersecurity Professional", issuer: "Google", badge: "GCC" },
+  { name: "Cisco Junior Cybersecurity Analyst", issuer: "Cisco", badge: "CJCA" },
+  { name: "API Penetration Testing", issuer: "API University", badge: "APPT" },
+  { name: "Postman API Student Expert", issuer: "Postman", badge: "API Exp" },
+  { name: "ISC2 Certified in Cybersecurity", issuer: "ISC2", badge: "CC" },
+];
+---
+
+<Card colSpan={colSpan || "lg:col-span-2"} rowSpan={rowSpan || ""} title="Certifications & Credentials">
+  <div class="flex flex-col gap-2 mt-2 h-full overflow-y-auto pr-1">
+    {certifications.map((cert) => (
+      <div class="flex items-center justify-between p-2.5 rounded-lg bg-darkslate-100 border border-darkslate-50 hover:border-primary-400 transition-colors">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+          <span class="text-xs sm:text-sm text-white font-medium">{cert.name}</span>
+        </div>
+        <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-primary-500/20 text-primary-200 border border-primary-500/40 shrink-0 ml-2">
+          {cert.badge}
+        </span>
+      </div>
+    ))}
+  </div>
+</Card>

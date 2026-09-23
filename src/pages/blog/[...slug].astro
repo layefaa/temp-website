@@ -1,22 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 
-const { slug } = Astro.params;
-
-if (slug === undefined) {
-  throw new Error("slug is missing");
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
-const posts = (await getCollection("blog")).sort(
-  (blogEntryA, blogEntryB) =>
-    blogEntryB.data.pubDate.getTime() - blogEntryA.data.pubDate.getTime()
-);
-
-const entry = posts.find((entry) => entry.slug === slug);
-if (entry === undefined) {
+const { entry } = Astro.props;
+if (!entry) {
   return Astro.redirect("/404");
 }
 const { Content } = await entry.render();
 ---
 
 <Content />
+

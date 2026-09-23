@@ -1,0 +1,49 @@
+---
+import Card from "./Card/index.astro";
+import { PROJECTS } from "../lib/projects";
+
+interface Props {
+  colSpan?: string;
+  rowSpan?: string;
+}
+
+const { colSpan, rowSpan } = Astro.props;
+---
+
+<Card
+  colSpan={colSpan || "lg:col-span-2"}
+  rowSpan={rowSpan || ""}
+  title="Projects"
+  href="/projects"
+>
+  <div class="flex flex-col justify-between h-[calc(100%-28px)] mt-2">
+    <div>
+      <div class="flex items-center gap-2 mb-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs font-bold text-emerald-300 uppercase tracking-wider">
+          Current Flagship
+        </span>
+        <span class="text-xs text-slate-300 font-medium">• Enterprise Dashboard</span>
+      </div>
+      <h3 class="text-xl font-bold text-white m-0 leading-tight group-hover:text-primary-300 transition-colors">
+        {PROJECTS[0].title}
+      </h3>
+      <p class="text-sm text-slate-100 font-normal mt-2.5 leading-relaxed line-clamp-3">
+        {PROJECTS[0].description}
+      </p>
+
+      <div class="flex flex-wrap gap-2 mt-3.5">
+        {PROJECTS[0].tech.slice(0, 4).map((t) => (
+          <span class="px-2.5 py-1 rounded text-xs font-mono bg-darkslate-400/90 border border-slate-700 text-primary-200 font-semibold">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <div class="pt-3.5 border-t border-darkslate-100 flex items-center justify-between text-sm text-primary-300 group-hover:text-primary-200 font-bold mt-4">
+      <span>Explore all {PROJECTS.length} case studies</span>
+      <span class="group-hover:translate-x-1.5 transition-transform duration-150">View Showcase →</span>
+    </div>
+  </div>
+</Card>

@@ -6,6 +6,10 @@ import ContactsCard from "../components/ContactsCard.astro";
 import TimeZone from "../components/TimeZoneCard.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Now from "../components/Now.astro";
+import TechStackCard from "../components/TechStackCard.astro";
+import CertificationsCard from "../components/CertificationsCard.astro";
+import SelectedProjectsCard from "../components/SelectedProjectsCard.astro";
+import { PROFILE, LINKS } from "../lib/constants";
 ---
 
 <script>
@@ -17,11 +21,11 @@ import Now from "../components/Now.astro";
     loaderAnimation,
     [
       cards,
-      { y: ["40%", "0%"], opacity: [0, 1] },
+      { y: ["30%", "0%"], opacity: [0, 1] },
       {
         at: "-0.1",
         duration: 0.4,
-        delay: stagger(0.3),
+        delay: stagger(0.08),
         easing: spring({ velocity: 100, stiffness: 50, damping: 10 }),
       },
     ],
@@ -31,39 +35,47 @@ import Now from "../components/Now.astro";
 </script>
 
 <Layout
-  title="Martin Luther Obahor - Frontend Developer"
-  description="Software developer with strong focus on the user experience animations and micro interactions"
+  title={`${PROFILE.name} - ${PROFILE.title}`}
+  description={PROFILE.bio}
 >
   <main
-    class="text-white m-auto p-2 grid gap-2 max-w-6xl overflow-hidden relative w-full sm:p-4 sm:gap-2 md:grid-cols-2 md:gap-3 md:p-6 lg:h-screen lg:grid-rows-8 lg:grid-cols-4 lg:gap-4 lg:max-h-[800px]"
+    class="text-white m-auto p-4 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-auto py-8"
   >
-    <IntroCard />
-    <AboutMe />
-    <ContactsCard />
-    <TimeZone />
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-2"
-      title="Blog"
-    >
-        <h2 class="mt-4">Coming Soon</h2>
-    </Card>
-    <Card
-      colSpan="md:col-span-1"
-      rowSpan="md:row-span-1"
-      title="Selected Projects"
-      href="projects"
-    >
-    </Card>
-    <Now />
-    <Card colSpan="md:col-span-1" rowSpan="md:row-span-1">
-      <p class="text-xs">
-        © 2024 · Crafted with ♥️ using <a
-          href="https://astro.build/"
-          target="_blank"
-          class="text-blue-500">Astro</a
-        >
-      </p>
+    <!-- Row 1: Intro (3 cols) + Now (1 col) = 4 cols -->
+    <IntroCard colSpan="col-span-1 md:col-span-2 lg:col-span-3" />
+    <Now colSpan="col-span-1 md:col-span-2 lg:col-span-1" />
+
+    <!-- Row 2: Tech Stack (2 cols) + Selected Projects (2 cols) = 4 cols -->
+    <TechStackCard colSpan="col-span-1 md:col-span-2 lg:col-span-2" />
+    <SelectedProjectsCard colSpan="col-span-1 md:col-span-2 lg:col-span-2" />
+
+    <!-- Row 3: Certifications (2 cols) + About (1 col) + TimeZone (1 col) = 4 cols -->
+    <CertificationsCard colSpan="col-span-1 md:col-span-2 lg:col-span-2" />
+    <AboutMe colSpan="col-span-1 md:col-span-1 lg:col-span-1" />
+    <TimeZone colSpan="col-span-1 md:col-span-1 lg:col-span-1" />
+
+    <!-- Row 4: Contacts (3 cols) + Copyright (1 col) = 4 cols -->
+    <ContactsCard colSpan="col-span-1 md:col-span-2 lg:col-span-3" />
+    <Card colSpan="col-span-1 md:col-span-2 lg:col-span-1">
+      <div class="flex flex-col justify-between h-full text-sm text-slate-100">
+        <div>
+          <span class="text-white font-bold text-base block">{PROFILE.name}</span>
+          <span class="text-xs text-primary-300 font-bold">{PROFILE.handle} · Security & UI</span>
+        </div>
+        <div class="pt-4 border-t border-darkslate-100 flex items-center justify-between">
+          <p class="text-xs m-0 text-slate-200 font-medium">
+            © 2026 · Built with <a
+              href="https://astro.build/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary-300 hover:text-white font-bold underline">Astro</a
+            >
+          </p>
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        </div>
+      </div>
     </Card>
   </main>
 </Layout>
+
+

@@ -25,12 +25,14 @@ const { frontmatter } = Astro.props;
     >
     <div class="my-10">
       <h1 class="text-5xl font-semibold">{frontmatter.title}</h1>
-      <div class="flex justify-between pt-4 text-gray-500 text-sm">
-        <p>{formatDate(new Date(frontmatter.pubDate))}</p>
-        <p>{frontmatter.minutesRead}</p>
+      <div class="flex justify-between pt-4 text-slate-300 text-sm font-medium">
+        <p class="m-0">{formatDate(new Date(frontmatter.pubDate))}</p>
+        <p class="m-0">
+          Written by <b class="text-white font-bold">{frontmatter.author}</b>
+        </p>
       </div>
     </div>
-    <article class="prose prose-p:text-red-500 prose-slate prose-invert">
+    <article class="prose prose-p:text-slate-100 prose-slate prose-invert">
       <slot />
     </article>
   </main>

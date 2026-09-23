@@ -3,7 +3,7 @@ import { defineConfig, presetUno, presetWebFonts } from "unocss";
 
 export default defineConfig({
   content: {
-    filesystem: ["**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}"],
+    filesystem: ["src/**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}"],
   },
   theme: {
     boxShadow: {
@@ -45,15 +45,16 @@ export default defineConfig({
         900: "#0B0B0B" /* Deeper and darker */,
       },
       primary: {
-        100: "#F9CDD3",
-        200: "#F3A3AA",
-        300: "#EC7981",
-        400: "#E64F59",
-        500: "#4169E1",
-        600: "#CF2F3D",
-        700: "#B82534",
-        800: "#A01B2B",
-        900: "#891321",
+        50: "#EFF6FF",
+        100: "#DBEAFE",
+        200: "#BFDBFE",
+        300: "#93C5FD",
+        400: "#60A5FA",
+        500: "#3B82F6",
+        600: "#2563EB",
+        700: "#1D4ED8",
+        800: "#1E40AF",
+        900: "#1E3A8A",
       },
     },
   },
